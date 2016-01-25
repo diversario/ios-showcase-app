@@ -44,7 +44,11 @@ class ViewController: UIViewController {
                                 
                                 print("Email login OK")
                                 
-                                DataService.ds.REF_BASE.authUser(email, password: pw, withCompletionBlock: nil)
+                                DataService.ds.REF_BASE.authUser(email, password: pw, withCompletionBlock: { error, authData in
+                                    let user = ["provider": authData.provider!, "foo": "bar"]
+                                    DataService.ds.createFirebaseUser(authData.uid, user: user)
+                                })
+                                
                                 self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                             }
                         })
@@ -71,14 +75,17 @@ class ViewController: UIViewController {
                 let access_token = FBSDKAccessToken.currentAccessToken().tokenString
                 print("Logged in with Facebook", access_token)
                 
-                DataService.ds.REF_BASE.authWithOAuthProvider("facebook", token: access_token, withCompletionBlock: { err, data in
+                DataService.ds.REF_BASE.authWithOAuthProvider("facebook", token: access_token, withCompletionBlock: { err, authData in
                     if err != nil {
                         print("Firebase facebook login failed", err.debugDescription)
                         self.showErrorAlert("Facebook login failed", msg: "Something went wrong.")
                     } else {
-                        print("Firebase Facebook logged in", data)
+                        print("Firebase Facebook logged in", authData)
                         
-                        NSUserDefaults.standardUserDefaults().setValue(data.uid, forKey: KEY_UID)
+                        let user = ["provider": authData.provider!]
+                        DataService.ds.createFirebaseUser(authData.uid, user: user)
+                        
+                        NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
                         
                         self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                     }
