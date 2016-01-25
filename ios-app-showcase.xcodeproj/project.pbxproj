@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202362161C55A7A5000A7928 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362151C55A7A5000A7928 /* DataService.swift */; };
+		202362181C55D360000A7928 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362171C55D360000A7928 /* FeedVC.swift */; };
+		2023621A1C55D445000A7928 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362191C55D445000A7928 /* PostCell.swift */; };
 		20DF21281C55437F00C0B393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF21271C55437F00C0B393 /* AppDelegate.swift */; };
 		20DF212A1C55437F00C0B393 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF21291C55437F00C0B393 /* ViewController.swift */; };
 		20DF212D1C55437F00C0B393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DF212B1C55437F00C0B393 /* Main.storyboard */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202362151C55A7A5000A7928 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		202362171C55D360000A7928 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		202362191C55D445000A7928 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		20DF21241C55437F00C0B393 /* ios-app-showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-app-showcase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DF21271C55437F00C0B393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20DF21291C55437F00C0B393 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202362141C55A79C000A7928 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				202362151C55A7A5000A7928 /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		20DF211B1C55437E00C0B393 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +91,7 @@
 		20DF21261C55437F00C0B393 /* ios-app-showcase */ = {
 			isa = PBXGroup;
 			children = (
+				202362141C55A79C000A7928 /* Services */,
 				20DF21471C55464D00C0B393 /* Util */,
 				20DF213C1C55439A00C0B393 /* Resources */,
 				20DF213B1C55439700C0B393 /* Model */,
@@ -94,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				20DF21291C55437F00C0B393 /* ViewController.swift */,
+				202362171C55D360000A7928 /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -104,6 +120,7 @@
 				20DF21451C5545DD00C0B393 /* MaterialView.swift */,
 				20DF214A1C554C0700C0B393 /* MaterialButton.swift */,
 				20DF214C1C554F5500C0B393 /* MaterialTextField.swift */,
+				202362191C55D445000A7928 /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -280,8 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20DF214D1C554F5500C0B393 /* MaterialTextField.swift in Sources */,
+				202362161C55A7A5000A7928 /* DataService.swift in Sources */,
 				20DF21461C5545DD00C0B393 /* MaterialView.swift in Sources */,
 				20DF212A1C55437F00C0B393 /* ViewController.swift in Sources */,
+				202362181C55D360000A7928 /* FeedVC.swift in Sources */,
+				2023621A1C55D445000A7928 /* PostCell.swift in Sources */,
 				20DF21281C55437F00C0B393 /* AppDelegate.swift in Sources */,
 				20DF21491C55465600C0B393 /* Constants.swift in Sources */,
 				20DF214B1C554C0700C0B393 /* MaterialButton.swift in Sources */,
