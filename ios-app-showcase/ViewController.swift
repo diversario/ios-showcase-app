@@ -8,6 +8,10 @@
 
 import UIKit
 
+import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -20,6 +24,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func fbButtonPressed (sender: UIButton) {
+        let fbLogin = FBSDKLoginManager()
+        
+        fbLogin.logInWithReadPermissions(["email"], fromViewController: self) { (fbResult: FBSDKLoginManagerLoginResult!, fbError: NSError!) -> Void in
+            if fbError != nil {
+                print("Facebook login failed", fbError.debugDescription)
+            } else {
+                let access_token = FBSDKAccessToken.currentAccessToken().tokenString
+                print("Logged in with Facebook", access_token)
+            }
+        }
+    }
 }
 

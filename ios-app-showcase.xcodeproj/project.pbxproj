@@ -12,6 +12,15 @@
 		20DF212D1C55437F00C0B393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DF212B1C55437F00C0B393 /* Main.storyboard */; };
 		20DF212F1C55437F00C0B393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DF212E1C55437F00C0B393 /* Assets.xcassets */; };
 		20DF21321C55437F00C0B393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DF21301C55437F00C0B393 /* LaunchScreen.storyboard */; };
+		20DF21411C5543C500C0B393 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DF213D1C5543C500C0B393 /* NotoSans-Bold.ttf */; };
+		20DF21421C5543C500C0B393 /* NotoSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DF213E1C5543C500C0B393 /* NotoSans-BoldItalic.ttf */; };
+		20DF21431C5543C500C0B393 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DF213F1C5543C500C0B393 /* NotoSans-Italic.ttf */; };
+		20DF21441C5543C500C0B393 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DF21401C5543C500C0B393 /* NotoSans-Regular.ttf */; };
+		20DF21461C5545DD00C0B393 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF21451C5545DD00C0B393 /* MaterialView.swift */; };
+		20DF21491C55465600C0B393 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF21481C55465600C0B393 /* Constants.swift */; };
+		20DF214B1C554C0700C0B393 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF214A1C554C0700C0B393 /* MaterialButton.swift */; };
+		20DF214D1C554F5500C0B393 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF214C1C554F5500C0B393 /* MaterialTextField.swift */; };
+		8BE16A8C4C2196230BB1446D /* Pods_ios_app_showcase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A87D19C1BCD07CA511BA69 /* Pods_ios_app_showcase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,17 @@
 		20DF212E1C55437F00C0B393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20DF21311C55437F00C0B393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20DF21331C55437F00C0B393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DF213D1C5543C500C0B393 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
+		20DF213E1C5543C500C0B393 /* NotoSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		20DF213F1C5543C500C0B393 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Italic.ttf"; sourceTree = "<group>"; };
+		20DF21401C5543C500C0B393 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
+		20DF21451C5545DD00C0B393 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		20DF21481C55465600C0B393 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		20DF214A1C554C0700C0B393 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
+		20DF214C1C554F5500C0B393 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		25DF2DBAA16E2B8A3BC0F4F2 /* Pods-ios-app-showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app-showcase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-app-showcase/Pods-ios-app-showcase.debug.xcconfig"; sourceTree = "<group>"; };
+		60A17CB1D22630DB156F18E0 /* Pods-ios-app-showcase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app-showcase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-app-showcase/Pods-ios-app-showcase.release.xcconfig"; sourceTree = "<group>"; };
+		F0A87D19C1BCD07CA511BA69 /* Pods_ios_app_showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_app_showcase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE16A8C4C2196230BB1446D /* Pods_ios_app_showcase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +61,8 @@
 			children = (
 				20DF21261C55437F00C0B393 /* ios-app-showcase */,
 				20DF21251C55437F00C0B393 /* Products */,
+				8DBD8D56C352AD91FE87F4CA /* Pods */,
+				5675F3A5D7837709690C758D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +77,79 @@
 		20DF21261C55437F00C0B393 /* ios-app-showcase */ = {
 			isa = PBXGroup;
 			children = (
+				20DF21471C55464D00C0B393 /* Util */,
+				20DF213C1C55439A00C0B393 /* Resources */,
+				20DF213B1C55439700C0B393 /* Model */,
+				20DF213A1C55439400C0B393 /* View */,
+				20DF21391C55439000C0B393 /* Controller */,
 				20DF21271C55437F00C0B393 /* AppDelegate.swift */,
-				20DF21291C55437F00C0B393 /* ViewController.swift */,
 				20DF212B1C55437F00C0B393 /* Main.storyboard */,
-				20DF212E1C55437F00C0B393 /* Assets.xcassets */,
 				20DF21301C55437F00C0B393 /* LaunchScreen.storyboard */,
 				20DF21331C55437F00C0B393 /* Info.plist */,
 			);
 			path = "ios-app-showcase";
+			sourceTree = "<group>";
+		};
+		20DF21391C55439000C0B393 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20DF21291C55437F00C0B393 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		20DF213A1C55439400C0B393 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20DF21451C5545DD00C0B393 /* MaterialView.swift */,
+				20DF214A1C554C0700C0B393 /* MaterialButton.swift */,
+				20DF214C1C554F5500C0B393 /* MaterialTextField.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		20DF213B1C55439700C0B393 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		20DF213C1C55439A00C0B393 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20DF212E1C55437F00C0B393 /* Assets.xcassets */,
+				20DF213D1C5543C500C0B393 /* NotoSans-Bold.ttf */,
+				20DF213E1C5543C500C0B393 /* NotoSans-BoldItalic.ttf */,
+				20DF213F1C5543C500C0B393 /* NotoSans-Italic.ttf */,
+				20DF21401C5543C500C0B393 /* NotoSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20DF21471C55464D00C0B393 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				20DF21481C55465600C0B393 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		5675F3A5D7837709690C758D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0A87D19C1BCD07CA511BA69 /* Pods_ios_app_showcase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DBD8D56C352AD91FE87F4CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25DF2DBAA16E2B8A3BC0F4F2 /* Pods-ios-app-showcase.debug.xcconfig */,
+				60A17CB1D22630DB156F18E0 /* Pods-ios-app-showcase.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20DF21361C55437F00C0B393 /* Build configuration list for PBXNativeTarget "ios-app-showcase" */;
 			buildPhases = (
+				77C3183E50E6ADAB739512B0 /* Check Pods Manifest.lock */,
 				20DF21201C55437F00C0B393 /* Sources */,
 				20DF21211C55437F00C0B393 /* Frameworks */,
 				20DF21221C55437F00C0B393 /* Resources */,
+				8ED3B5092E38D03CF069FBD3 /* Embed Pods Frameworks */,
+				A003FE19764475CDD4A8624A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,21 +214,77 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DF21411C5543C500C0B393 /* NotoSans-Bold.ttf in Resources */,
 				20DF21321C55437F00C0B393 /* LaunchScreen.storyboard in Resources */,
+				20DF21421C5543C500C0B393 /* NotoSans-BoldItalic.ttf in Resources */,
+				20DF21431C5543C500C0B393 /* NotoSans-Italic.ttf in Resources */,
 				20DF212F1C55437F00C0B393 /* Assets.xcassets in Resources */,
 				20DF212D1C55437F00C0B393 /* Main.storyboard in Resources */,
+				20DF21441C5543C500C0B393 /* NotoSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77C3183E50E6ADAB739512B0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8ED3B5092E38D03CF069FBD3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-app-showcase/Pods-ios-app-showcase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A003FE19764475CDD4A8624A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-app-showcase/Pods-ios-app-showcase-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20DF21201C55437F00C0B393 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DF214D1C554F5500C0B393 /* MaterialTextField.swift in Sources */,
+				20DF21461C5545DD00C0B393 /* MaterialView.swift in Sources */,
 				20DF212A1C55437F00C0B393 /* ViewController.swift in Sources */,
 				20DF21281C55437F00C0B393 /* AppDelegate.swift in Sources */,
+				20DF21491C55465600C0B393 /* Constants.swift in Sources */,
+				20DF214B1C554C0700C0B393 /* MaterialButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +395,10 @@
 		};
 		20DF21371C55437F00C0B393 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25DF2DBAA16E2B8A3BC0F4F2 /* Pods-ios-app-showcase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "ios-app-showcase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.diversario.ios-app-showcase";
@@ -259,8 +408,10 @@
 		};
 		20DF21381C55437F00C0B393 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60A17CB1D22630DB156F18E0 /* Pods-ios-app-showcase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "ios-app-showcase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.diversario.ios-app-showcase";
@@ -287,6 +438,7 @@
 				20DF21381C55437F00C0B393 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
