@@ -7,5 +7,6 @@ target 'ios-app-showcase' do
   pod 'FBSDKLoginKit', '~> 4.9.0'
   pod 'FBSDKShareKit', '~> 4.9.0'
   pod 'Firebase', '~> 2.5.0'
+  pod 'Alamofire', '~> 3.0'
 end
 

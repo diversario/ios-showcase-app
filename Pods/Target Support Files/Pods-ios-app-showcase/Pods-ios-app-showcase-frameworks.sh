@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ios-app-showcase/Alamofire.framework"
   install_framework "Pods-ios-app-showcase/Bolts.framework"
   install_framework "Pods-ios-app-showcase/FBSDKCoreKit.framework"
   install_framework "Pods-ios-app-showcase/FBSDKLoginKit.framework"
@@ -91,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ios-app-showcase/Firebase.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ios-app-showcase/Alamofire.framework"
   install_framework "Pods-ios-app-showcase/Bolts.framework"
   install_framework "Pods-ios-app-showcase/FBSDKCoreKit.framework"
   install_framework "Pods-ios-app-showcase/FBSDKLoginKit.framework"
