@@ -86,12 +86,11 @@ class PostCell: UITableViewCell {
             if let didNotLike = snapshot.value as? NSNull {
                 self.likeImage.image = UIImage(named: "heart-full")
                 self.post.adjustLikes(true)
-                
-                DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").setValue(true, forKey: self.post.postKey)
+                self.likeRef.setValue(true)
             } else {
                 self.likeImage.image = UIImage(named: "heart-empty")
                 self.post.adjustLikes(false)
-                DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").setValue(true, forKey: self.post.postKey)
+                self.likeRef.removeValue()
             }
         })
     }

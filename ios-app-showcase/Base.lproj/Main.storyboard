@@ -271,7 +271,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cRr-Sb-KNd">
                                                             <rect key="frame" x="8" y="8" width="544" height="229"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6q0-9o-3tk">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6q0-9o-3tk">
                                                                     <rect key="frame" x="0.0" y="0.0" width="544" height="50"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="EUD-P7-T0T">
@@ -282,25 +282,25 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="username123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="yZ3-hc-MvF">
-                                                                            <rect key="frame" x="50" y="0.0" width="304" height="50"/>
+                                                                            <rect key="frame" x="50" y="0.0" width="155" height="50"/>
                                                                             <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="0.37421077580000001" blue="0.32939067080000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-empty" translatesAutoresizingMaskIntoConstraints="NO" id="laj-zN-JYg">
-                                                                            <rect key="frame" x="354" y="0.0" width="150" height="50"/>
+                                                                            <rect key="frame" x="205" y="0.0" width="202" height="50"/>
                                                                         </imageView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9qh-7g-dGn">
-                                                                            <rect key="frame" x="504" y="0.0" width="40" height="50"/>
+                                                                            <rect key="frame" x="406" y="0.0" width="138" height="50"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRc-eu-Y6u">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="23.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRc-eu-Y6u">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="27"/>
                                                                                     <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
                                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-AT-R4O">
-                                                                                    <rect key="frame" x="0.0" y="23" width="40" height="26.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-AT-R4O">
+                                                                                    <rect key="frame" x="0.0" y="27" width="138" height="24"/>
                                                                                     <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="17"/>
                                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
@@ -345,6 +345,7 @@
                                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="descriptionText" destination="RwG-2X-VNk" id="4O0-w1-kxr"/>
+                                            <outlet property="likeImage" destination="laj-zN-JYg" id="NJ8-dZ-L7A"/>
                                             <outlet property="likesLabel" destination="lRc-eu-Y6u" id="N92-Cc-4Rc"/>
                                             <outlet property="profileImage" destination="EUD-P7-T0T" id="s6K-pe-Olz"/>
                                             <outlet property="showcaseImage" destination="tKF-Wy-lNe" id="nmC-9t-4hO"/>
