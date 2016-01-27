@@ -19,6 +19,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var imagePicker = UIImagePickerController()
     var tap = UITapGestureRecognizer()
     
+    var imageSelected = false
+    
     static var imageCache = NSCache()
     
     override func viewDidLoad() {
@@ -59,29 +61,37 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBAction func onPostButton(sender: MaterialButton) {
         if let txt = postField.text where txt != "" {
             
-            if let img = cameraButton.image {
-                let url = "https://api.imageshack.com/v2/images"
+            if let img = cameraButton.image where imageSelected {
+                let url = NSURL(string: "https://post.imageshack.us/upload_api.php")!
                 let imgData = UIImageJPEGRepresentation(img, 0.6)!
                 let keyData = IMGSHACK_API_KEY.dataUsingEncoding(NSUTF8StringEncoding)!
                 let keyJSON = "json".dataUsingEncoding(NSUTF8StringEncoding)!
-                
+
                 Alamofire.upload(.POST, url, multipartFormData: { multipartFormData in
-//                    multipartFormData.appendBodyPart(data: imgData, name: "file", fileName: "image", mimeType: "image/jpeg")
-                    multipartFormData.appendBodyPart(data: keyData, name: "api_key", mimeType: "text/plain")
+                    
+                    multipartFormData.appendBodyPart(data: imgData, name: "fileupload", fileName: "image", mimeType: "image/jpg")
+                    multipartFormData.appendBodyPart(data: keyData, name: "key")
+                    multipartFormData.appendBodyPart(data: keyJSON, name: "format")
+                    
                     }, encodingCompletion: { encodingResult in
                         switch (encodingResult) {
-                        case .Success(let upload, _, _):
-                            upload.responseJSON(completionHandler: { res in
+                        case .Success(let request, _, _):
+                            request.responseJSON(completionHandler: { res in
                                 if let info = res.result.value as? [String: AnyObject] {
-                                    print(info)
+                                    if let links = info["links"] as? [String: String] {
+                                        if let link = links["image_link"] {
+                                            self.postToFirebase(link)
+                                        }
+                                    }
                                 }
                             })
                         case .Failure(let err):
                             print(err)
                         }
                 })
+            } else {
+                postToFirebase(nil)
             }
-            
         }
     }
     
@@ -92,7 +102,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         cameraButton.image = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        
+        imageSelected = true
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -137,5 +147,25 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         } else {
             return tableView.estimatedRowHeight
         }
+    }
+    
+    func postToFirebase (imgUrl: String?) {
+        var post: [String: AnyObject] = [
+            "description": postField.text!,
+            "likes": 0
+        ]
+        
+        if imgUrl != nil {
+            post["imageUrl"] = imgUrl!
+        }
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        postField.text = ""
+        cameraButton.image = UIImage(named: "camera")
+        imageSelected = false
+        
+        tableView.reloadData()
     }
 }

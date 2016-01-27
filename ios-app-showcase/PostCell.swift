@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class PostCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
@@ -15,11 +16,19 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
     
+    @IBOutlet weak var likeImage: UIImageView!
+    
     var post: Post!
     var request: Request?
     
+    var likeRef: Firebase!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let tap = UITapGestureRecognizer(target: self, action: "likeTapped:")
+        likeImage.addGestureRecognizer(tap)
+        likeImage.userInteractionEnabled = true
     }
     
     override func drawRect(rect: CGRect) {
@@ -34,6 +43,10 @@ class PostCell: UITableViewCell {
 
     func configureCell (post: Post, img: UIImage?) {
         self.post = post
+        
+        likeRef = DataService.ds.REF_USER_CURRENT
+            .childByAppendingPath("likes")
+            .childByAppendingPath(post.postKey)
         
         self.descriptionText.text = post.description
         self.likesLabel.text = String(post.likes)
@@ -57,5 +70,52 @@ class PostCell: UITableViewCell {
         } else {
             self.showcaseImage.hidden = true
         }
+        
+        likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if let doesNotExist = snapshot.value as? NSNull {
+                self.likeImage.image = UIImage(named: "heart-empty")
+            } else {
+                self.likeImage.image = UIImage(named: "heart-full")
+            }
+        })
+        
+    }
+    
+    func likeTapped(sender: UITapGestureRecognizer) {
+        likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if let didNotLike = snapshot.value as? NSNull {
+                self.likeImage.image = UIImage(named: "heart-full")
+                self.post.adjustLikes(true)
+                
+                DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").setValue(true, forKey: self.post.postKey)
+            } else {
+                self.likeImage.image = UIImage(named: "heart-empty")
+                self.post.adjustLikes(false)
+                DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").setValue(true, forKey: self.post.postKey)
+            }
+        })
+    }
+    
+    var foo: String!
+}
+
+
+class Distance {
+    private var _meters: Double
+    
+    init (m: Double) {
+        _meters = m
+    }
+    
+    var m: Double {
+        return _meters
+    }
+    
+    var ft: Double {
+        return _meters / 0.3 // roughly :)
+    }
+    
+    var km: Double {
+        return _meters / 1000
     }
 }
