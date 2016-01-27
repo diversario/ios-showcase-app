@@ -24,7 +24,11 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-            performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+            if NSUserDefaults.standardUserDefaults().valueForKey("username") != nil {
+                performSegueWithIdentifier(SEGUE_LOGGED_IN_WITH_USERNAME, sender: nil)
+            } else {
+                performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+            }
         }
     }
     

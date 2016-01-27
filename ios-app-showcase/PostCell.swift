@@ -15,6 +15,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var showcaseImage: UIImageView!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var likeImage: UIImageView!
     
@@ -79,6 +80,13 @@ class PostCell: UITableViewCell {
             }
         })
         
+        if self.post.uid != nil {
+            DataService.ds.REF_USERS.childByAppendingPath(self.post.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if let username = snapshot.value["username"] as? String {
+                    self.usernameLabel.text = username
+                }
+            })
+        }
     }
     
     func likeTapped(sender: UITapGestureRecognizer) {

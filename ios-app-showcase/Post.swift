@@ -14,6 +14,7 @@ class Post {
     private var _imageUrl: String?
     private var _likes: Int!
     private var _username: String!
+    private var _uid: String!
     private var _postKey: String!
     
     private var _postRef: Firebase!
@@ -38,25 +39,33 @@ class Post {
         return _postKey
     }
     
+    var uid: String? {
+        return _uid
+    }
+    
     init(description: String, imageUrl: String?, username: String) {
         self._postDesc = description
         self._imageUrl = imageUrl
         self._username = username
     }
     
-    init(postKey: String, dictionary: [String: AnyObject]) {
+    init(postKey: String, props: [String: AnyObject]) {
         self._postKey = postKey
         
-        if let likes = dictionary["likes"] as? Int {
+        if let likes = props["likes"] as? Int {
             self._likes = likes
         }
         
-        if let imgUrl = dictionary["imageUrl"] as? String {
+        if let imgUrl = props["imageUrl"] as? String {
             self._imageUrl = imgUrl
         }
         
-        if let descr = dictionary["description"] as? String {
+        if let descr = props["description"] as? String {
             self._postDesc = descr
+        }
+        
+        if let uid = props["uid"] as? String {
+            self._uid = uid
         }
         
         self._postRef = DataService.ds.REF_POSTS.childByAppendingPath(_postKey)
