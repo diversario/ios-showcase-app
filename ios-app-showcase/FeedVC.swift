@@ -21,8 +21,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     var imageSelected = false
     
-    static var imageCache = NSCache()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +38,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         tableView.estimatedRowHeight = 350
         
         DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapshot in
-            print(snapshot.value)
+            //print(snapshot.value)
             
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
                 self.posts = []
@@ -62,32 +60,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         if let txt = postField.text where txt != "" {
             
             if let img = cameraButton.image where imageSelected {
-                let url = NSURL(string: "https://post.imageshack.us/upload_api.php")!
-                let imgData = UIImageJPEGRepresentation(img, 0.6)!
-                let keyData = IMGSHACK_API_KEY.dataUsingEncoding(NSUTF8StringEncoding)!
-                let keyJSON = "json".dataUsingEncoding(NSUTF8StringEncoding)!
-
-                Alamofire.upload(.POST, url, multipartFormData: { multipartFormData in
-                    
-                    multipartFormData.appendBodyPart(data: imgData, name: "fileupload", fileName: "image", mimeType: "image/jpg")
-                    multipartFormData.appendBodyPart(data: keyData, name: "key")
-                    multipartFormData.appendBodyPart(data: keyJSON, name: "format")
-                    
-                    }, encodingCompletion: { encodingResult in
-                        switch (encodingResult) {
-                        case .Success(let request, _, _):
-                            request.responseJSON(completionHandler: { res in
-                                if let info = res.result.value as? [String: AnyObject] {
-                                    if let links = info["links"] as? [String: String] {
-                                        if let link = links["image_link"] {
-                                            self.postToFirebase(link)
-                                        }
-                                    }
-                                }
-                            })
-                        case .Failure(let err):
-                            print(err)
-                        }
+                DataService.ds.uploadImage(img, { err, url in
+                    if let _url = url {
+                        self.postToFirebase(_url)
+                    }
                 })
             } else {
                 postToFirebase(nil)
@@ -107,22 +83,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
-        
+
         if let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
             cell.request?.cancel()
             var img: UIImage?
-            
+
             if let url = post.imageUrl {
-                img = FeedVC.imageCache.objectForKey(url) as? UIImage
+                img = DataService.ds.imageCache.objectForKey(url) as? UIImage
             }
             
             cell.configureCell(post, img: img)
             return cell
         } else {
             var img: UIImage?
-            
+
             if let url = post.imageUrl {
-                img = FeedVC.imageCache.objectForKey(url) as? UIImage
+                img = DataService.ds.imageCache.objectForKey(url) as? UIImage
             }
             
             let cell = PostCell()
@@ -162,6 +138,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
         firebasePost.setValue(post)
+        DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").childByAppendingPath(firebasePost.key).setValue(true)
         
         postField.text = ""
         cameraButton.image = UIImage(named: "camera")

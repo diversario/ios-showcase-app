@@ -11,13 +11,16 @@ import Alamofire
 import Firebase
 
 class PostCell: UITableViewCell {
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var showcaseImage: UIImageView!
+    @IBOutlet weak var profileImage: RemoteImage!
+    @IBOutlet weak var showcaseImage: RemoteImage!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var likeImage: UIImageView!
+    
+    var _oldPostDesc = ""
     
     var post: Post!
     var request: Request?
@@ -36,12 +39,6 @@ class PostCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     func configureCell (post: Post, img: UIImage?) {
         self.post = post
         
@@ -56,42 +53,39 @@ class PostCell: UITableViewCell {
             if img != nil {
                 self.showcaseImage.image = img
             } else {
-                request = Alamofire
-                    .request(.GET, post.imageUrl!)
-                    .validate(contentType: ["image/*"])
-                    .response(completionHandler: { req, res, data, err in
-                        if err == nil {
-                            let img = UIImage(data: data!)!
-                            self.showcaseImage.image = img
-                            FeedVC.imageCache.setObject(img, forKey: post.imageUrl!)
-                            
-                        }
-                    })
+                self.showcaseImage.loadUrl(post.imageUrl!)
             }
         } else {
             self.showcaseImage.hidden = true
         }
         
         likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let doesNotExist = snapshot.value as? NSNull {
+            if let _ = snapshot.value as? NSNull {
                 self.likeImage.image = UIImage(named: "heart-empty")
             } else {
                 self.likeImage.image = UIImage(named: "heart-full")
             }
         })
         
-        if self.post.uid != nil {
-            DataService.ds.REF_USERS.childByAppendingPath(self.post.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
-                if let username = snapshot.value["username"] as? String {
-                    self.usernameLabel.text = username
-                }
-            })
+        DataService.ds.REF_USERS.childByAppendingPath(self.post.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let username = snapshot.value["username"] as! String
+            self.usernameLabel.text = username
+            
+            if let pUrl = snapshot.value["profileImageUrl"] as? String {
+                self.profileImage.loadUrl(pUrl)
+                self.profileImage.alpha = 1
+                self.profileImage.contentMode = .ScaleAspectFill
+            }
+        })
+        
+        if self.post.uid == DataService.ds.REF_USER_CURRENT.key {
+            editButton.hidden = false
         }
     }
     
     func likeTapped(sender: UITapGestureRecognizer) {
         likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let didNotLike = snapshot.value as? NSNull {
+            if let _ = snapshot.value as? NSNull {
                 self.likeImage.image = UIImage(named: "heart-full")
                 self.post.adjustLikes(true)
                 self.likeRef.setValue(true)
@@ -103,26 +97,25 @@ class PostCell: UITableViewCell {
         })
     }
     
-    var foo: String!
-}
+    @IBAction func onEditTapped(sender: UIButton) {
+        if !self.descriptionText.editable {
+            _oldPostDesc = self.descriptionText.text!
+            descriptionText.editable = true
+            editButton.setTitle("Save", forState: .Normal)
+            editButton.setTitleColor(UIColor.redColor(), forState: .Normal)
+            return
+        }
 
-
-class Distance {
-    private var _meters: Double
-    
-    init (m: Double) {
-        _meters = m
-    }
-    
-    var m: Double {
-        return _meters
-    }
-    
-    var ft: Double {
-        return _meters / 0.3 // roughly :)
-    }
-    
-    var km: Double {
-        return _meters / 1000
+        editButton.setTitle("Edit...", forState: .Normal)
+        editButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        descriptionText.editable = false
+        
+        if let newPostText = descriptionText.text where newPostText != "" && newPostText != _oldPostDesc {
+            DataService.ds.REF_POSTS.childByAppendingPath(post.postKey).childByAppendingPath("description").setValue(newPostText)
+        } else {
+            descriptionText.text = _oldPostDesc
+        }
+        
+        _oldPostDesc = ""
     }
 }

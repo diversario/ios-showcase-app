@@ -55,6 +55,12 @@ class FirstRunVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @IBAction func onContinue(sender: UIButton) {
         if let username = textField.text where username != "" {
+            if imagePicked {
+                DataService.ds.uploadImage(imageButton.image!, { err, url in
+                    DataService.ds.REF_USER_CURRENT.childByAppendingPath("profileImageUrl").setValue(url)
+                })
+            }
+            
             DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(username)
             NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
             NSUserDefaults.standardUserDefaults().synchronize()

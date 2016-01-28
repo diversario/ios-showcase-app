@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201A27861C588CAD00C99134 /* FirstRunVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A27851C588CAD00C99134 /* FirstRunVC.swift */; };
+		201A27881C59C89A00C99134 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A27871C59C89A00C99134 /* RemoteImage.swift */; };
 		202362161C55A7A5000A7928 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362151C55A7A5000A7928 /* DataService.swift */; };
 		202362181C55D360000A7928 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362171C55D360000A7928 /* FeedVC.swift */; };
 		2023621A1C55D445000A7928 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202362191C55D445000A7928 /* PostCell.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		201A27851C588CAD00C99134 /* FirstRunVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRunVC.swift; sourceTree = "<group>"; };
+		201A27871C59C89A00C99134 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		202362151C55A7A5000A7928 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		202362171C55D360000A7928 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		202362191C55D445000A7928 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				20DF214A1C554C0700C0B393 /* MaterialButton.swift */,
 				20DF214C1C554F5500C0B393 /* MaterialTextField.swift */,
 				202362191C55D445000A7928 /* PostCell.swift */,
+				201A27871C59C89A00C99134 /* RemoteImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				20DF214D1C554F5500C0B393 /* MaterialTextField.swift in Sources */,
 				201A27861C588CAD00C99134 /* FirstRunVC.swift in Sources */,
 				202362161C55A7A5000A7928 /* DataService.swift in Sources */,
+				201A27881C59C89A00C99134 /* RemoteImage.swift in Sources */,
 				20DF21461C5545DD00C0B393 /* MaterialView.swift in Sources */,
 				20DF212A1C55437F00C0B393 /* ViewController.swift in Sources */,
 				202362181C55D360000A7928 /* FeedVC.swift in Sources */,
